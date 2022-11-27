@@ -1,4 +1,7 @@
 <?php
+if (isset($_GET[''])) {
+    header('location: index.php');
+}
 require_once "head.php";
 include_once "erros.php";
 $alert = new erros();
