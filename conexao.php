@@ -41,31 +41,26 @@ class Connect
         $sql = $this->dao->prepare($sql);
         $sql->execute();
 
-        if ($sql->rowCount() > 0) {
-            
+        // if ($sql->rowCount() > 0) {
+            foreach ($sql as $key => $row) {
+            // for ($a = $sql->rowCount(); $i = 0; $i != $a) {
+                // for ($i != $a; $i++;) {
 
 
-                        foreach ($sql as $key => $row) {
 
-
-
-                    for ($a = $sql->rowCount(); $i = 0; $i++ ) {
-                        while ($a != $i) {
-                            ?>
-                <tr>
-                  
-                    <?php
+                    // $sql = "SELECT * FROM cliente ";
+                    // $sql = $this->dao->prepare($sql);
+                    // $sql->execute();
+?>
+<td>
+    <?php
                         echo $row['email'];
-                    ?>
-
-                </tr>
-                <?php
-                        }
-                    }
-                }
-                        
-                    
-
+            ?>
+</td>
+<?php
+                    //}
+                
+            //}
         }
     }
     public function inserirlogin($email, $senha)
@@ -100,7 +95,8 @@ class Connect
 // foreach ($sql as $key => $row) {
 //     $email = $row['email'];
 //     if (isset($email)) {
-// ?>
+// 
+?>
 <!-- //         <td> -->
 <?php
 //             $i = 2;
@@ -112,7 +108,8 @@ class Connect
 //                 //return $i;
 
 //             }
-//             ?>
+//             
+?>
 <!-- //         </td> -->
 <?php
 
@@ -130,7 +127,8 @@ class Connect
 //         for ($a = $sql->rowCount(); $a != $i; $i++) {
 
 
-// ?>
+// 
+?>
 <!-- <td> -->
 <?php
 
@@ -140,7 +138,8 @@ class Connect
 //                 //return $i;
 
 //             }
-//             ?>
+//             
+?>
 <!-- </td> -->
 <?php
 //         }
@@ -159,14 +158,16 @@ class Connect
 //     for ($a = $sql->rowCount(); $a != $i; ) {
 //         foreach ($sql as $key) {
 
-// ?>
+// 
+?>
 
-//
+
 <?php
 //         print $key['email'] . "<br>";
-// ?>
+// 
+?>
 
-//
+
 <?php
 
 //     }
