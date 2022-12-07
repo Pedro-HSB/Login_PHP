@@ -1,14 +1,19 @@
+<link rel="stylesheet" type="text/css" href="table.css">
 <table>
+<thead>
     <tr>
-        <td>email</td>
+      <th scope="col"> email</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-        <td>
+
             <?php
             require_once "conexao.php";
             $con = new Connect();
             $con->listalogin();
             ?>
-        </td>
+
     </tr>
+    </tbody>
 </table>

@@ -15,7 +15,7 @@ class Connect
             $this->dao = new PDO($this->dsn, $this->user, $this->passwd);
             $this->dao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $erro) {
-            echo  $erro->getMessage();
+            echo $erro->getMessage();
             exit();
         }
     }
@@ -27,7 +27,7 @@ class Connect
         $sql->bindValue("senha", $senha);
         $sql->execute();
         if ($sql->rowCount() > 0) {
-            header('location: index.php?existe');
+            header('location: listaUsuario.php');
         } else {
             session_start();
             $_SESSION['email'] = $email;
@@ -40,22 +40,35 @@ class Connect
         $sql = "SELECT * FROM cliente ";
         $sql = $this->dao->prepare($sql);
         $sql->execute();
+
         if ($sql->rowCount() > 0) {
-            foreach ($sql as $key => $row) {
-                $email = $row['email'];
-                if (isset($email)) {?>
-                    <td><?php
-                    for ($i=1; $i<=10; $i++) {
-                        for ($a = $sql->rowCount(); $a <> $i; $a++) { 
-                            print $email . "<br>";
+            
+
+
+                        foreach ($sql as $key => $row) {
+
+
+
+                    for ($a = $sql->rowCount(); $i = 0; $i++ ) {
+                        while ($a != $i) {
+                            ?>
+                <tr>
+                  
+                    <?php
+                        echo $row['email'];
+                    ?>
+
+                </tr>
+                <?php
                         }
                     }
-                      ?></td><?php
                 }
-            }
+                        
+                    
+
         }
     }
-    public function inserirlogin($email,$senha)
+    public function inserirlogin($email, $senha)
     {
         $sql = "INSERT INTO cliente (id,email,senha) VALUES (NULL,:email, :senha)";
         $sql = $this->dao->prepare($sql);
@@ -65,7 +78,6 @@ class Connect
         if ($sql == true) {
             header('location: listaUsuario.php');
         }
-        
     }
 }
 
@@ -82,3 +94,82 @@ class Connect
 //         {
 //             echo 'nao tem';
 //         }
+
+
+
+// foreach ($sql as $key => $row) {
+//     $email = $row['email'];
+//     if (isset($email)) {
+// ?>
+<!-- //         <td> -->
+<?php
+//             $i = 2;
+//             for ($a = $sql->rowCount(); $a != $i; $i++) {
+
+//                 echo $email . "<br>";
+//                 // parei em geracao de lista
+
+//                 //return $i;
+
+//             }
+//             ?>
+<!-- //         </td> -->
+<?php
+
+//     }
+// }
+
+
+
+
+
+
+
+// foreach ($sql as $key => $row) {
+//     for ($i = 0; $i != 0; $i++) {
+//         for ($a = $sql->rowCount(); $a != $i; $i++) {
+
+
+// ?>
+<!-- <td> -->
+<?php
+
+//                 echo $row ;
+//                 // parei em geracao de lista
+
+//                 //return $i;
+
+//             }
+//             ?>
+<!-- </td> -->
+<?php
+//         }
+//     }
+// }
+
+
+
+
+
+
+
+
+
+// for ($i = 0; $i != 0; $i++) {
+//     for ($a = $sql->rowCount(); $a != $i; ) {
+//         foreach ($sql as $key) {
+
+// ?>
+
+//
+<?php
+//         print $key['email'] . "<br>";
+// ?>
+
+//
+<?php
+
+//     }
+// }
+// }
+// }
