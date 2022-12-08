@@ -30,4 +30,18 @@ unset($_GET['null']);
 
         }
     }
+
+    public function session()
+    {
+        if (isset($_GET['session'])) {
+
+?>
+<script>
+    alert("session expirada")
+
+</script>
+<?php
+
+        }
+    }
 }

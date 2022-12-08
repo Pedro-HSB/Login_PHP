@@ -1,5 +1,12 @@
 <?php
 session_start();
+if (isset($_SESSION['session'])) {
+  header('location: index.php?session');
+  session_destroy();
+}
+?>
+<link rel="stylesheet" type="text/css" href="inserir.css">
+<?php
 if (isset($_SESSION['email']) || isset($_SESSION['senha'])) {
 ?>
 

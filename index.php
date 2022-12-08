@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET[''])) {
     header('location: index.php');
+    session_destroy();
 }
 require_once "head.php";
 include_once "erros.php";

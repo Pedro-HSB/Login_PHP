@@ -27,12 +27,13 @@ class Connect
         $sql->bindValue("senha", $senha);
         $sql->execute();
         if ($sql->rowCount() > 0) {
-            header('location: listaUsuario.php');
+            $_SESSION['user'];
+            header('location: listaUsuario.php?session');
         } else {
             session_start();
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
-            header('location: inserirUsuario.php');
+            header('location: inserirUsuario.php?session');
         }
     }
     public function listalogin()
@@ -40,27 +41,20 @@ class Connect
         $sql = "SELECT * FROM cliente ";
         $sql = $this->dao->prepare($sql);
         $sql->execute();
-
-        // if ($sql->rowCount() > 0) {
-            foreach ($sql as $key => $row) {
-            // for ($a = $sql->rowCount(); $i = 0; $i != $a) {
-                // for ($i != $a; $i++;) {
-
-
-
-                    // $sql = "SELECT * FROM cliente ";
-                    // $sql = $this->dao->prepare($sql);
-                    // $sql->execute();
+        foreach ($sql as $key => $row) {
+            $email = $row['email'];
 ?>
-<td>
-    <?php
-                        echo $row['email'];
-            ?>
-</td>
+<tr>
+    <th scope="row">
+    <td class="col-8">
+        <?php
+            echo $email;
+                        ?>
+    </td>
+
+    </th>
+</tr>
 <?php
-                    //}
-                
-            //}
         }
     }
     public function inserirlogin($email, $senha)
@@ -71,106 +65,7 @@ class Connect
         $sql->bindValue("senha", $senha);
         $sql->execute();
         if ($sql == true) {
-            header('location: listaUsuario.php');
+            header('location: listaUsuario.php?session');
         }
     }
 }
-
-
-// if ($sql->rowCount() > 0) {
-//     foreach ($sql as $key => $row) {
-//         $linhas = $row['email'];
-//         echo $linhas;
-//         var_dump($linhas);
-//         if($linhas > 0){
-//             echo 'tem';
-//         }
-//         else
-//         {
-//             echo 'nao tem';
-//         }
-
-
-
-// foreach ($sql as $key => $row) {
-//     $email = $row['email'];
-//     if (isset($email)) {
-// 
-?>
-<!-- //         <td> -->
-<?php
-//             $i = 2;
-//             for ($a = $sql->rowCount(); $a != $i; $i++) {
-
-//                 echo $email . "<br>";
-//                 // parei em geracao de lista
-
-//                 //return $i;
-
-//             }
-//             
-?>
-<!-- //         </td> -->
-<?php
-
-//     }
-// }
-
-
-
-
-
-
-
-// foreach ($sql as $key => $row) {
-//     for ($i = 0; $i != 0; $i++) {
-//         for ($a = $sql->rowCount(); $a != $i; $i++) {
-
-
-// 
-?>
-<!-- <td> -->
-<?php
-
-//                 echo $row ;
-//                 // parei em geracao de lista
-
-//                 //return $i;
-
-//             }
-//             
-?>
-<!-- </td> -->
-<?php
-//         }
-//     }
-// }
-
-
-
-
-
-
-
-
-
-// for ($i = 0; $i != 0; $i++) {
-//     for ($a = $sql->rowCount(); $a != $i; ) {
-//         foreach ($sql as $key) {
-
-// 
-?>
-
-
-<?php
-//         print $key['email'] . "<br>";
-// 
-?>
-
-
-<?php
-
-//     }
-// }
-// }
-// }
